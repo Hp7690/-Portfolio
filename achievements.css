@@ -1,0 +1,381 @@
+/* Enhanced Achievements with Flip Cards */
+.achievements-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-lg);
+}
+
+.achievement-flip-card {
+    background-color: transparent;
+    width: 100%;
+    height: 280px;
+    perspective: 1000px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.6s ease-in-out;
+}
+
+.achievement-flip-card:hover {
+    transform: scale(1.05);
+}
+
+.achievement-flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s ease-in-out;
+    transform-style: preserve-3d;
+    border-radius: var(--border-radius-lg);
+}
+
+.achievement-flip-card.flipped .achievement-flip-inner {
+    transform: rotateY(180deg);
+}
+
+.achievement-front, .achievement-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: var(--border-radius-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-lg);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 2px solid;
+    transition: all 0.3s ease;
+}
+
+.achievement-front {
+    background: linear-gradient(135deg, 
+        rgba(0, 255, 65, 0.1) 0%, 
+        rgba(255, 71, 87, 0.1) 50%, 
+        rgba(83, 82, 237, 0.1) 100%);
+    border-color: var(--color-primary);
+    backdrop-filter: blur(10px);
+}
+
+.achievement-back {
+    background: linear-gradient(135deg, 
+        rgba(255, 71, 87, 0.15) 0%, 
+        rgba(83, 82, 237, 0.15) 50%, 
+        rgba(0, 255, 65, 0.15) 100%);
+    border-color: var(--color-secondary);
+    transform: rotateY(180deg);
+    backdrop-filter: blur(15px);
+}
+
+/* Animated Achievement Icon */
+.achievement-icon-container {
+    position: relative;
+    margin-bottom: var(--spacing-md);
+}
+
+.achievement-emoji {
+    font-size: 3rem;
+    display: block;
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5));
+    animation: motion-detect 2s infinite ease-in-out;
+}
+
+.achievement-flip-card:hover .achievement-emoji {
+    font-size: 4.5rem;
+    transform: rotate(360deg);
+    filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.8));
+}
+
+@keyframes floatingIcon {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(5deg);
+    }
+}
+
+@keyframes motion-detect {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2) rotate(10deg);
+    }
+}
+
+/* Glow effect behind icon */
+.achievement-emoji::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    animation: pulseGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+    0% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+/* Front Card Content */
+.achievement-title {
+    color: var(--color-primary);
+    font-family: var(--font-secondary);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.achievement-preview {
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    line-height: 1.4;
+    text-align: center;
+    opacity: 0.9;
+}
+
+.achievement-year-badge {
+    position: absolute;
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    background: linear-gradient(45deg, var(--color-secondary), #ff6b7a);
+    color: #fff;
+    padding: 0.3rem 0.8rem;
+    border-radius: var(--border-radius-xl);
+    font-weight: bold;
+    font-size: 0.8rem;
+    box-shadow: 0 2px 8px rgba(255, 71, 87, 0.4);
+    animation: yearBadgePulse 2s ease-in-out infinite;
+}
+
+@keyframes yearBadgePulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 2px 8px rgba(255, 71, 87, 0.4);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 4px 16px rgba(255, 71, 87, 0.6);
+    }
+}
+
+/* Back Card Content */
+.achievement-details {
+    text-align: left;
+    width: 100%;
+}
+
+.achievement-description {
+    color: var(--color-text);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+}
+
+.achievement-highlights {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.achievement-highlights li {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: var(--spacing-xs);
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.achievement-highlights li::before {
+    content: '⭐';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--color-secondary);
+    animation: starTwinkle 1.5s ease-in-out infinite;
+}
+
+.achievement-highlights li:nth-child(2)::before {
+    animation-delay: 0.3s;
+}
+
+.achievement-highlights li:nth-child(3)::before {
+    animation-delay: 0.6s;
+}
+
+@keyframes starTwinkle {
+    0%, 100% {
+        opacity: 0.7;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* Flip Indicator */
+.flip-indicator {
+    position: absolute;
+    bottom: var(--spacing-sm);
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--color-primary);
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.7;
+    animation: flipHint 2s ease-in-out infinite;
+}
+
+@keyframes flipHint {
+    0%, 100% {
+        opacity: 0.7;
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-3px);
+    }
+}
+
+.flip-indicator::after {
+    content: '🔄';
+    margin-left: 0.5rem;
+    animation: rotateHint 3s linear infinite;
+}
+
+@keyframes rotateHint {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Motion Detection Effects */
+.achievement-flip-card.motion-detected .achievement-emoji {
+    animation: motionReaction 0.6s ease-out;
+}
+
+@keyframes motionReaction {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+    25% {
+        transform: scale(1.1) rotate(-5deg);
+    }
+    50% {
+        transform: scale(1.15) rotate(5deg);
+    }
+    75% {
+        transform: scale(1.1) rotate(-2deg);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+/* Auto-flip animation on hover */
+.achievement-flip-card:hover .flip-indicator::after {
+    animation-duration: 0.5s;
+}
+
+/* Special effects for different achievement types */
+.achievement-flip-card[data-type="winner"] .achievement-front {
+    background: linear-gradient(135deg, 
+        rgba(255, 215, 0, 0.2) 0%, 
+        rgba(255, 165, 0, 0.2) 100%);
+    border-color: #ffd700;
+}
+
+.achievement-flip-card[data-type="participant"] .achievement-front {
+    background: linear-gradient(135deg, 
+        rgba(0, 255, 65, 0.2) 0%, 
+        rgba(0, 200, 50, 0.2) 100%);
+}
+
+.achievement-flip-card[data-type="gaming"] .achievement-front {
+    background: linear-gradient(135deg, 
+        rgba(138, 43, 226, 0.2) 0%, 
+        rgba(75, 0, 130, 0.2) 100%);
+    border-color: #8a2be2;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .achievements-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+        padding: var(--spacing-md);
+    }
+    
+    .achievement-flip-card {
+        height: 250px;
+    }
+    
+    .achievement-emoji {
+        font-size: 3rem;
+    }
+    
+    .achievement-flip-card:hover .achievement-emoji {
+        font-size: 3.5rem;
+    }
+    
+    .achievement-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .achievement-flip-card {
+        height: 220px;
+    }
+    
+    .achievement-front, .achievement-back {
+        padding: var(--spacing-md);
+    }
+    
+    .achievement-emoji {
+        font-size: 2.5rem;
+    }
+    
+    .achievement-flip-card:hover .achievement-emoji {
+        font-size: 3rem;
+    }
+    
+    .achievement-title {
+        font-size: 1.3rem;
+    }
+}
