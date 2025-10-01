@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #0f0f23;
+            color: #fff;
+        }
+        
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #1a1a2e;
+            border-radius: 10px;
+            border: 2px solid #00ff41;
+        }
+        
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0f0f23, #1a1a2e, #16213e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 1;
+            transition: opacity 1s ease-out;
+        }
+
+        .loading-screen.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loading-content {
+            text-align: center;
+            color: #00ff41;
+        }
+
+        .progress-bar {
+            width: 300px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid #00ff41;
+            margin: 20px auto;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00ff41, #ff4757, #00ff41);
+            background-size: 200% 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+            animation: progressShine 2s linear infinite;
+        }
+
+        @keyframes progressShine {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        .skill-bar {
+            margin: 10px 0;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .skill-progress {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            border: 1px solid #00ff41;
+        }
+
+        .skill-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00ff41, #ff4757);
+            width: 0%;
+            transition: width 1.5s ease;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(26, 26, 46, 0.9);
+            border: 2px solid #00ff41;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            color: #00ff41;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            margin: 10px;
+            background: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #ff3742;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <h2>Loading Portfolio Test...</h2>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <div id="progress-percentage">0%</div>
+        </div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <button id="theme-toggle" class="theme-toggle">🌙</button>
+
+    <!-- Main Content -->
+    <div style="display: none;" id="main-content">
+        <h1>Portfolio Test Page</h1>
+        <p>This test page verifies that all components are working correctly.</p>
+
+        <div class="test-section">
+            <h2>✅ Loading Screen Test</h2>
+            <p>Loading screen should appear first, then fade out after 3 seconds.</p>
+            <button class="btn" onclick="showLoadingAgain()">Test Loading Again</button>
+        </div>
+
+        <div class="test-section">
+            <h2>✅ Theme Toggle Test</h2>
+            <p>Click the theme toggle button (🌙) in the top-right corner.</p>
+            <p>Current theme: <span id="current-theme">Dark</span></p>
+        </div>
+
+        <div class="test-section">
+            <h2>✅ Skill Bars Test</h2>
+            <div class="skill-bar">
+                <div class="skill-info">
+                    <span>JavaScript</span>
+                    <span>85%</span>
+                </div>
+                <div class="skill-progress">
+                    <div class="skill-fill" data-skill="85"></div>
+                </div>
+            </div>
+            <div class="skill-bar">
+                <div class="skill-info">
+                    <span>Python</span>
+                    <span>90%</span>
+                </div>
+                <div class="skill-progress">
+                    <div class="skill-fill" data-skill="90"></div>
+                </div>
+            </div>
+            <button class="btn" onclick="animateSkills()">Animate Skills</button>
+        </div>
+
+        <div class="test-section">
+            <h2>✅ Modal Test</h2>
+            <button class="btn" onclick="showTestModal()">Open Test Modal</button>
+        </div>
+
+        <div class="test-section">
+            <h2>✅ Form Test</h2>
+            <form id="test-form">
+                <input type="text" placeholder="Your Name" required style="padding: 10px; margin: 5px; width: 200px;">
+                <input type="email" placeholder="Your Email" required style="padding: 10px; margin: 5px; width: 200px;">
+                <br>
+                <button type="submit" class="btn">Test Submit</button>
+            </form>
+        </div>
+
+        <!-- Test Modal -->
+        <div id="test-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center;">
+            <div style="background: #1a1a2e; padding: 30px; border-radius: 10px; border: 2px solid #00ff41; max-width: 500px; text-align: center;">
+                <h3>Test Modal</h3>
+                <p>This modal is working correctly!</p>
+                <button class="btn" onclick="closeTestModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        console.log('🚀 Portfolio Test Page Loaded');
+
+        // Loading Screen Logic
+        let progress = 0;
+        const progressFill = document.getElementById('progress-fill');
+        const progressPercentage = document.getElementById('progress-percentage');
+        const loadingScreen = document.getElementById('loading-screen');
+        const mainContent = document.getElementById('main-content');
+
+        function updateProgress() {
+            if (progress <= 100) {
+                progressFill.style.width = progress + '%';
+                progressPercentage.textContent = progress + '%';
+                progress += 2;
+                setTimeout(updateProgress, 50);
+            } else {
+                setTimeout(() => {
+                    loadingScreen.classList.add('fade-out');
+                    setTimeout(() => {
+                        loadingScreen.style.display = 'none';
+                        mainContent.style.display = 'block';
+                        console.log('✅ Loading screen completed');
+                    }, 1000);
+                }, 500);
+            }
+        }
+
+        // Start loading animation
+        updateProgress();
+
+        // Theme Toggle Logic
+        let isDark = true;
+        document.getElementById('theme-toggle').addEventListener('click', function() {
+            isDark = !isDark;
+            document.body.style.background = isDark ? '#0f0f23' : '#f8f9fa';
+            document.body.style.color = isDark ? '#fff' : '#333';
+            this.textContent = isDark ? '🌙' : '☀️';
+            document.getElementById('current-theme').textContent = isDark ? 'Dark' : 'Light';
+            console.log('✅ Theme switched to:', isDark ? 'Dark' : 'Light');
+        });
+
+        // Skill Animation Logic
+        function animateSkills() {
+            const skillFills = document.querySelectorAll('.skill-fill');
+            skillFills.forEach(fill => {
+                fill.style.width = '0%';
+                setTimeout(() => {
+                    const skill = fill.getAttribute('data-skill');
+                    fill.style.width = skill + '%';
+                }, 100);
+            });
+            console.log('✅ Skills animated');
+        }
+
+        // Modal Logic
+        function showTestModal() {
+            document.getElementById('test-modal').style.display = 'flex';
+            console.log('✅ Modal opened');
+        }
+
+        function closeTestModal() {
+            document.getElementById('test-modal').style.display = 'none';
+            console.log('✅ Modal closed');
+        }
+
+        // Form Logic
+        document.getElementById('test-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('✅ Form submission test successful!');
+            console.log('✅ Form tested');
+        });
+
+        // Show Loading Again Function
+        function showLoadingAgain() {
+            progress = 0;
+            loadingScreen.style.display = 'flex';
+            loadingScreen.classList.remove('fade-out');
+            mainContent.style.display = 'none';
+            updateProgress();
+        }
+
+        // Auto-animate skills after 2 seconds
+        setTimeout(animateSkills, 2000);
+
+        console.log('✅ All test functions initialized');
+    </script>
+</body>
+</html>

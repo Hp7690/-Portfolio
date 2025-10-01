@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harsh Pandey - Portfolio</title>
+    <meta name="description" content="Game Developer & Designer specializing in AI/ML and immersive gaming experiences">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="components/loading.css">
+    <link rel="stylesheet" href="components/modal.css">
+    <link rel="stylesheet" href="components/timeline.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Enhanced Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <div class="glitch-text" data-text="HP">HP</div>
+            </div>
+            <div class="loading-text">
+                <h2>Loading Portfolio...</h2>
+                <p>Initializing gaming experience</p>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="progress-percentage">0%</div>
+            </div>
+        </div>
+        <div class="loading-particles"></div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+        <span class="theme-icon">🌙</span>
+    </button>
+    <!-- Custom Car Cursor -->
+    <div class="car-cursor" id="cursor"></div>
+
+    <!-- Navigation -->
+    <nav id="main-nav">
+        <div class="nav-brand">
+            <span class="brand-text">HP</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home" data-section="home">Home</a></li>
+            <li><a href="#about" data-section="about">About</a></li>
+            <li><a href="#skills" data-section="skills">Skills</a></li>
+            <li><a href="#projects" data-section="projects">Projects</a></li>
+            <li><a href="#education" data-section="education">Education</a></li>
+            <li><a href="#achievements" data-section="achievements">Achievements</a></li>
+            <li><a href="#contact" data-section="contact">Contact</a></li>
+        </ul>
+        <div class="mobile-menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <div class="glitch-text" data-text="HARSH PANDEY">HARSH PANDEY</div>
+                <h2>Game Developer & Designer</h2>
+                <p>Creating immersive gaming experiences with cutting-edge technology</p>
+                <div class="cta-buttons">
+                    <button class="btn-primary" onclick="showSection('projects')">View Projects</button>
+                    <button class="btn-secondary" onclick="showSection('contact')">Contact Me</button>
+                </div>
+            </div>
+            <div class="floating-elements">
+                <div class="floating-icon">🎮</div>
+                <div class="floating-icon">🚗</div>
+                <div class="floating-icon">⚡</div>
+                <div class="floating-icon">🎯</div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="section-content">
+                <h2>About Me</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p> I'm Harsh Pandey ,an aspiring game Developer and AI enthusiast who loves turing ideas into interactive worlds . 
+                            Even since I started exploring technology,I've been fascinated by how creativity and code can come together 
+                        to build something people can see,play,and learn from.  </p>
+                        <p>I'm a Computer Science student building project that solve real problem.
+                            My AI-Driven Crop Detection System helps Farmer monitor crop health using image recognition,
+                            while my AI-based Farmer Query Support & Advisory System provides personalized assistance to farmers.
+                        </p>
+                    </div>
+                    <div class="stats">
+                        <div class="stat">
+                            <h3>3</h3>
+                            <p>Projects</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <div class="section-content">
+                <h2>Skills & Technologies</h2>
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3>Programming Languages</h3>
+                        <div class="skill-bars">
+                            <div class="skill-bar">
+                                <div class="skill-info">
+                                    <span class="skill-name">C#</span>
+                                    <span class="skill-level">90%</span>
+                                </div>
+                                <div class="skill-progress">
+                                    <div class="skill-fill" data-skill="90"></div>
+                                </div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-info">
+                                    <span class="skill-name">C++</span>
+                                    <span class="skill-level">85%</span>
+                                </div>
+                                <div class="skill-progress">
+                                    <div class="skill-fill" data-skill="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-info">
+                                    <span class="skill-name">Python</span>
+                                    <span class="skill-level">88%</span>
+                                </div>
+                                <div class="skill-progress">
+                                    <div class="skill-fill" data-skill="88"></div>
+                                </div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-info">
+                                    <span class="skill-name">Java</span>
+                                    <span class="skill-level">82%</span>
+                                </div>
+                                <div class="skill-progress">
+                                    <div class="skill-fill" data-skill="82"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Web Technologies</h3>
+                        <div class="skill-bars">
+                            <div class="skill-bar">
+                                <div class="skill-info">
+                                    <span class="skill-name">JavaScript</span>
+                                    <span class="skill-level">87%</span>
+                                </div>
+                                <div class="skill-progress">
+                                    <div class="skill-fill" data-skill="87"></div>
+                                </div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-info">
+                                    <span class="skill-name">HTML/CSS</span>
+                                    <span class="skill-level">92%</span>
+                                </div>
+                                <div class="skill-progress">
+                                    <div class="skill-fill" data-skill="92"></div>
+                                </div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-info">
+                                    <span class="skill-name">React</span>
+                                    <span class="skill-level">75%</span>
+                                </div>
+                                <div class="skill-progress">
+                                    <div class="skill-fill" data-skill="75"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Game Development</h3>
+                        <div class="skill-bars">
+                            <div class="skill-bar">
+                                <div class="skill-info">
+                                    <span class="skill-name">Unity3D</span>
+                                    <span class="skill-level">85%</span>
+                                </div>
+                                <div class="skill-progress">
+                                    <div class="skill-fill" data-skill="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-info">
+                                    <span class="skill-name">Unreal Engine</span>
+                                    <span class="skill-level">70%</span>
+                                </div>
+                                <div class="skill-progress">
+                                    <div class="skill-fill" data-skill="70"></div>
+                                </div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-info">
+                                    <span class="skill-name">OpenGL</span>
+                                    <span class="skill-level">78%</span>
+                                </div>
+                                <div class="skill-progress">
+                                    <div class="skill-fill" data-skill="78"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <div class="section-content">
+                <h2>Featured Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card" data-project="speed-racer">
+                        <div class="project-image">
+                            <div class="project-icon">🏆️</div>
+                            <div class="project-overlay">
+                                <button class="view-details-btn">View Details</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>AI-Driven Crop Detection System</h3>
+                            <p>Smart agriculture solution using computer vision and machine learning for crop health monitoring.</p>
+                            <div class="project-tags">
+                                <span>Python</span>
+                                <span>OpenCV</span>
+                                <span>TensorFlow</span>
+                                <span>AI/ML</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link" target="_blank">GitHub</a>
+                                <a href="#" class="project-link" target="_blank">Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card" data-project="farmer-support">
+                        <div class="project-image">
+                            <div class="project-icon">🌾</div>
+                            <div class="project-overlay">
+                                <button class="view-details-btn">View Details</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Farmer Query Support System</h3>
+                            <p>AI-based advisory system providing personalized assistance to farmers with real-time support.</p>
+                            <div class="project-tags">
+                                <span>Python</span>
+                                <span>NLP</span>
+                                <span>Flask</span>
+                                <span>MySQL</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link" target="_blank">GitHub</a>
+                                <a href="#" class="project-link" target="_blank">Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card" data-project="game-engine">
+                        <div class="project-image">
+                            <div class="project-icon">🎮</div>
+                            <div class="project-overlay">
+                                <button class="view-details-btn">View Details</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Custom Game Engine</h3>
+                            <p>Built a lightweight 2D game engine from scratch with physics simulation and rendering pipeline.</p>
+                            <div class="project-tags">
+                                <span>C++</span>
+                                <span>OpenGL</span>
+                                <span>Physics</span>
+                                <span>Engine</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link" target="_blank">GitHub</a>
+                                <a href="#" class="project-link" target="_blank">Documentation</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education & Experience Section -->
+        <section id="education" class="section">
+            <div class="section-content">
+                <h2>Education & Experience</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2023 - Present</div>
+                        <div class="timeline-content">
+                            <h3>Bachelor of Technology</h3>
+                            <h4>Shri Ramswaroop Memorial College of Engineering and Technology</h4>
+                            <p>Computer Science Engineering</p>
+                            <ul>
+                                <li>Specializing in AI/ML and Game Development</li>
+                                <li>Current CGPA: 8.5/10</li>
+                                <li>Active in coding competitions and tech events</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2024</div>
+                        <div class="timeline-content">
+                            <h3>AI/ML Project Experience</h3>
+                            <h4>Smart India Hackathon Participant</h4>
+                            <p>Developed innovative solutions for agriculture technology</p>
+                            <ul>
+                                <li>AI-Driven Crop Detection System</li>
+                                <li>Farmer Query Support & Advisory System</li>
+                                <li>Team leadership and project management</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section id="achievements" class="section">
+            <div class="section-content">
+                <h2>Achievements & Awards</h2>
+                <div class="achievements-slider">
+                    <div class="achievement-card active">
+                        <div class="achievement-icon">🏆</div>
+                        <h3>SIH Participant</h3>
+                        <p>Created an AI Driven Crop Detection System</p>
+                        <div class="achievement-year">2024</div>
+                    </div>
+                    <div class="achievement-card">
+                        <div class="achievement-icon">⭐</div>
+                        <h3>SIH Participant</h3>
+                        <p>AI based Farmer query support & advisory system</p>
+                        <div class="achievement-year">2025</div>
+                    </div>
+                    <div class="achievement-card">
+                        <div class="achievement-icon">🎖️</div>
+                        <h3>BGIS</h3>
+                        <p>First place in BGIS against Bots</p>
+                        <div class="achievement-year">2023</div>
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <button class="prev-btn" onclick="changeAchievement(-1)">‹</button>
+                    <button class="next-btn" onclick="changeAchievement(1)">›</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="section-content">
+                <h2>Let's Connect</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-text">
+                            <h3>Ready to collaborate?</h3>
+                            <p>Let's build something amazing together. Whether you have a project in mind or just want to chat about technology, I'm always excited to connect with fellow developers and innovators.</p>
+                        </div>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <span class="contact-icon">📧</span>
+                                <div>
+                                    <strong>Email</strong>
+                                    <p>hp418542@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-icon">📱</span>
+                                <div>
+                                    <strong>Phone</strong>
+                                    <p>+91 9569694475</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-icon">🌍</span>
+                                <div>
+                                    <strong>Location</strong>
+                                    <p>Lucknow, India</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="social-links">
+                            <a href="https://github.com" class="social-link" target="_blank" rel="noopener">
+                                <span class="social-icon">🔗</span>
+                                GitHub
+                            </a>
+                            <a href="https://linkedin.com" class="social-link" target="_blank" rel="noopener">
+                                <span class="social-icon">💼</span>
+                                LinkedIn
+                            </a>
+                            <a href="https://x.com" class="social-link" target="_blank" rel="noopener">
+                                <span class="social-icon">🐦</span>
+                                Twitter
+                            </a>
+                            <a href="https://discord.com" class="social-link" target="_blank" rel="noopener">
+                                <span class="social-icon">🎮</span>
+                                Discord
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contact-form-container">
+                        <form id="contact-form" class="contact-form">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" required>
+                                <span class="error-message"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" required>
+                                <span class="error-message"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="">Select a topic</option>
+                                    <option value="collaboration">Project Collaboration</option>
+                                    <option value="job">Job Opportunity</option>
+                                    <option value="consultation">Consultation</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <span class="error-message"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project or idea..."></textarea>
+                                <span class="error-message"></span>
+                            </div>
+                            <button type="submit" class="submit-btn">
+                                <span class="btn-text">Send Message</span>
+                                <span class="btn-loader"></span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Background Effects -->
+    <div class="bg-effects">
+        <div class="grid-overlay"></div>
+        <div class="particles"></div>
+    </div>
+
+    <!-- Project Modals -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <div class="modal-header">
+                    <h2 id="modal-title">Project Title</h2>
+                    <div class="modal-tags" id="modal-tags"></div>
+                </div>
+                <div class="modal-description" id="modal-description">
+                    <p>Project description goes here...</p>
+                </div>
+                <div class="modal-features" id="modal-features">
+                    <h3>Key Features</h3>
+                    <ul id="modal-features-list"></ul>
+                </div>
+                <div class="modal-tech" id="modal-tech">
+                    <h3>Technologies Used</h3>
+                    <div class="tech-stack" id="modal-tech-list"></div>
+                </div>
+                <div class="modal-links" id="modal-links">
+                    <a href="#" class="modal-link" id="modal-github" target="_blank">View on GitHub</a>
+                    <a href="#" class="modal-link" id="modal-demo" target="_blank">Live Demo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="components/loading.js"></script>
+    <script src="components/modal.js"></script>
+    <script src="components/form.js"></script>
+    <script src="components/theme.js"></script>
+</body>
+
+</html>
